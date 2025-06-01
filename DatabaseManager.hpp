@@ -51,6 +51,8 @@ public:
     bool printAverageStatsByTeam(int teamId);
     bool printPlayerByName(const std::string& name);
 
+    void printAllTeamNames(); 
+
 private:
     sqlite3* db;
 };

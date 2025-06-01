@@ -424,3 +424,22 @@ bool DatabaseManager::printPlayerByName(const std::string& name)
     sqlite3_finalize(stmt);
     return found;
 }
+
+void DatabaseManager::printAllTeamNames() 
+{
+    const char* sql = "SELECT name FROM teams ORDER BY name;";
+    sqlite3_stmt* stmt;
+
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+        std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(db) << '\n';
+        return;
+    }
+
+    std::cout << "\n[ Team Names ]\n";
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        const char* name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        std::cout << "- " << name << '\n';
+    }
+
+    sqlite3_finalize(stmt);
+}
