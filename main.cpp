@@ -27,8 +27,6 @@ void printMenu()
     cout << CYAN << "10. Exit                          |\n" << RESET;
 
     cout << BOLD << "------ Choose one : [1 ~ 10] ------\n> " << RESET;
-
-    cout << "------ Choose one : [1 ~ 10] ------\n> ";
 }
 
 int main() {
